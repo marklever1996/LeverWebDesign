@@ -12,7 +12,7 @@ body.dark-mode .contact {
 .contact .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 2rem;
 }
 
 .contact h2 {
@@ -40,9 +40,9 @@ body.dark-mode .contact h2 span:last-child {
 }
 
 .contact-content {
-    display: flex;
-    gap: 60px;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
 }
 
 .contact-info {
@@ -214,12 +214,34 @@ body.dark-mode .contact-form button {
     }
 
     .contact .container {
-        padding: 0 20px;
+        padding: 0 1rem;
     }
 
     .contact h2 {
         font-size: 2em;
         margin-bottom: 50px;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+    }
+
+    .contact-form button {
+        width: 100%;
     }
 
     .contact-form {

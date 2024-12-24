@@ -1,0 +1,43 @@
+.landing-page section {
+    position: relative;
+}
+
+.landing-page section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(61, 143, 220, 0.1) 20%,
+        rgba(61, 143, 220, 0.1) 80%,
+        transparent
+    );
+}
+
+body.dark-mode .landing-page section::after {
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(0, 247, 255, 0.05) 20%,
+        rgba(0, 247, 255, 0.05) 80%,
+        transparent
+    );
+}
+
+/* Verwijder de lijn van de laatste section */
+.landing-page section:last-child::after {
+    display: none;
+}
+
+/* Optioneel: subtiele schaduw aan de bovenkant van elke section */
+.landing-page section {
+    box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.02);
+}
+
+body.dark-mode .landing-page section {
+    box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.1);
+} 

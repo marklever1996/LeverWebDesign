@@ -5,6 +5,7 @@ import GarantiesSection from '../components/landing/GarantiesSection';
 import ProjectsSection from '../components/landing/ProjectsSection';
 import ContactSection from '../components/landing/ContactSection';
 import WhoAmISection from '../components/landing/WhoAmISection';
+import './LandingPage.css';
 
 const LandingPage = () => {
     return (

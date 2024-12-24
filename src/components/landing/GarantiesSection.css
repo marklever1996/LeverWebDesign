@@ -11,7 +11,7 @@ body.dark-mode .garanties {
 .garanties .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
 }
 
 .garanties h2 {
@@ -40,7 +40,8 @@ body.dark-mode .garanties h2 span:last-child {
 
 .pricing-header {
     text-align: center;
-    margin-bottom: 50px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .pricing-header h3 {
@@ -76,19 +77,17 @@ body.dark-mode .pricing-header p {
 
 .checkmarks {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 80px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     width: 100%;
 }
 
 .checkmark {
-    background: #fff;
-    padding: 30px;
+    padding: 2rem;
+    background: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(1, 23, 196, 0.1);
+    box-shadow: 0 4px 20px rgba(1, 23, 196, 0.05);
 }
 
 body.dark-mode .checkmark {
@@ -167,27 +166,31 @@ body.dark-mode .checkmark p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .garanties {
-        padding: 60px 0;
+    .garanties .container {
+        padding: 0 1rem;
     }
 
-    .garanties h2 {
-        font-size: 2em;
-    }
-
-    .pricing-header h3 {
-        font-size: 1.6em;
-        padding: 0 20px;
-    }
-
-    .pricing-header p {
-        font-size: 1.1em;
-        padding: 0 20px;
+    .garanties-text {
+        gap: 2rem;
     }
 
     .checkmarks {
         grid-template-columns: 1fr;
-        padding: 0 20px;
+        gap: 1.5rem;
+    }
+
+    .checkmark {
+        margin: 0 auto;
+        width: 100%;
+        max-width: none;
+    }
+
+    .pricing-header {
+        padding: 0 1rem;
+    }
+
+    .pricing-header h3 {
+        font-size: 1.5rem;
     }
 } 
 
@@ -212,31 +215,29 @@ body.dark-mode .checkmark:hover .check-icon {
 } 
 
 .garanties-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.garanties-text {
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 50px;
+    flex-direction: column;
     align-items: center;
 }
 
+.garanties-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
 .savings-image {
-    flex: 0 0 400px;
-    max-width: 400px;
+    width: 100%;
+    max-width: 600px;
     height: auto;
     border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
 }
 
 .pricing-header {
-    flex: 1;
-    min-width: 300px;
     text-align: left;
+    max-width: 800px;
 }
 
 .pricing-header h3 {
@@ -268,6 +269,27 @@ body.dark-mode .checkmark:hover .check-icon {
 
     .pricing-header h3,
     .pricing-header p {
+        text-align: center;
+    }
+} 
+
+/* Nieuwe container voor image en header */
+.header-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    width: 100%;
+    align-items: center;
+}
+
+/* Media query voor mobiele apparaten */
+@media (max-width: 768px) {
+    .header-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pricing-header {
         text-align: center;
     }
 } 

@@ -36,20 +36,22 @@ const GarantiesSection = () => {
             <div className="container">
                 <div className="garanties-content">
                     <div className="garanties-text">
-                        <img src={SavingsImage} alt="Savings" className="savings-image" />
-                        <div className="pricing-header">
-                            <h3>
-                                <span className="price">50%</span> Aanbetaling,{' '}
-                                <span className="price">50%</span> Achteraf,{' '}
-                                en <span className="price">100%</span> Tevredenheidsgarantie
-                            </h3>
-                            <p>
-                                Voor een standaard website van 5 pagina's voor kleine bedrijven is er geen aanbetaling nodig. 
-                                Voor grotere projecten stellen we een aangepaste offerte op, afhankelijk van het aantal extra pagina's en de benodigde tijd.
-                            </p>
-                            <p>
-                                Betaal de helft bij aanvang en de rest na oplevering. Geniet van volledige tevredenheidsgarantie.
-                            </p>
+                        <div className="header-container">
+                            <img src={SavingsImage} alt="Savings" className="savings-image" />
+                            <div className="pricing-header">
+                                <h3>
+                                    <span className="price">50%</span> Aanbetaling,{' '}
+                                    <span className="price">50%</span> Achteraf,{' '}
+                                    en <span className="price">100%</span> Tevredenheidsgarantie
+                                </h3>
+                                <p>
+                                    Voor een standaard website van 5 pagina's voor kleine bedrijven is er geen aanbetaling nodig. 
+                                    Voor grotere projecten stellen we een aangepaste offerte op, afhankelijk van het aantal extra pagina's en de benodigde tijd.
+                                </p>
+                                <p>
+                                    Betaal de helft bij aanvang en de rest na oplevering. Geniet van volledige tevredenheidsgarantie.
+                                </p>
+                            </div>
                         </div>
                         <div className="checkmarks">
                             {guarantees.map((guarantee, index) => (
