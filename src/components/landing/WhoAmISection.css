@@ -1,0 +1,221 @@
+.who-am-i {
+    background-color: #fff;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-mode .who-am-i {
+    background-color: #000;
+}
+
+.who-am-i .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.who-am-i h2 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 70px;
+    letter-spacing: 0.05em;
+    position: relative;
+}
+
+.who-am-i h2 span:first-child {
+    color: #3d8fdc;
+}
+
+.who-am-i h2 span:last-child {
+    color: #000;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.text-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.text-content p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 35px;
+    letter-spacing: 0.02em;
+}
+
+.profile-image {
+    width: 380px;
+    height: 380px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 25px 25px 50px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.profile-image::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(61, 143, 220, 0.1), rgba(0, 247, 255, 0.1));
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+.profile-image:hover {
+    transform: translateY(-10px);
+}
+
+.profile-image:hover::after {
+    transform: translate(10px, 10px);
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    color: #3d8fdc;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+.read-more::after {
+    content: '→';
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover::after {
+    transform: translateX(5px);
+}
+
+/* Dark Mode Styling */
+body.dark-mode .who-am-i h2 span:first-child {
+    color: #00f7ff;
+}
+
+body.dark-mode .who-am-i h2 span:last-child {
+    color: #3d8fdc;
+}
+
+body.dark-mode .text-content p {
+    color: #a0aec0;
+}
+
+body.dark-mode .profile-image {
+    box-shadow: 25px 25px 50px rgba(0, 9, 77, 0.2);
+}
+
+body.dark-mode .read-more {
+    color: #00f7ff;
+}
+
+/* Animaties */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.text-content {
+    animation: fadeInLeft 0.8s ease forwards;
+}
+
+.profile-image {
+    animation: fadeInRight 0.8s ease 0.2s forwards;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .content-wrapper {
+        gap: 60px;
+    }
+
+    .profile-image {
+        width: 340px;
+        height: 340px;
+    }
+}
+
+@media (max-width: 992px) {
+    .content-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .text-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .profile-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .read-more {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .who-am-i {
+        padding: 80px 0;
+    }
+
+    .who-am-i .container {
+        padding: 0 20px;
+    }
+
+    .who-am-i h2 {
+        font-size: 2em;
+        margin-bottom: 50px;
+    }
+
+    .text-content p {
+        font-size: 1.1em;
+        line-height: 1.7;
+    }
+
+    .profile-image {
+        width: 280px;
+        height: 280px;
+    }
+} 

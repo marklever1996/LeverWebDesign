@@ -1,4 +1,5 @@
 import React from 'react';
+import './ServicesSection.css';
 
 const ServicesSection = () => {
     const services = [
@@ -9,7 +10,7 @@ const ServicesSection = () => {
         },
         {
             title: "UI/UX Design",
-            description: "Gebruiksvriendelijke en aantrekkelijke interfaces die converteren",
+            description: "Gebruiksvriendelijke en aantrekkelijke interfaces die converteren op alle apparaten",
             icon: "🎨"
         },
         {
@@ -21,7 +22,12 @@ const ServicesSection = () => {
 
     return (
         <section className="services">
-            <h2>Diensten</h2>
+            <h2>
+                <span>Wat</span>{' '}
+                <span>ik doe</span>
+            </h2>
+            <p>Ik ben gespecialiseerd in het ontwerpen en ontwikkelen van websites en webapplicaties voor kleine bedrijven. 
+            Met mijn kennis en ervaring in deze vakgebieden, kan ik u helpen bij het creëren van een unieke en functionele online ervaring voor uw bedrijf.</p>
             <div className="services-grid">
                 {services.map((service, index) => (
                     <div key={index} className="service-card">

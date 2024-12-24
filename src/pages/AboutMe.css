@@ -1,0 +1,121 @@
+.about-page {
+    background-color: #fff;
+}
+
+body.dark-mode .about-page {
+    background-color: #000;
+}
+
+/* Section 2: Kwaliteit */
+.quality {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+    text-align: center;
+}
+
+body.dark-mode .quality {
+    background-color: rgba(0, 9, 77, 0.2);
+}
+
+.quality h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.kwaliteit {
+    color: #3d8fdc;
+}
+
+.kwantiteit {
+    color: #000;
+}
+
+body.dark-mode .kwaliteit {
+    color: #00f7ff;
+}
+
+body.dark-mode .kwantiteit {
+    color: #3d8fdc;
+}
+
+.quality p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+body.dark-mode .quality p {
+    color: #a0aec0;
+}
+
+/* Section 3: Services */
+.services {
+    padding: 100px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.service-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode .service-card {
+    background: rgba(61, 143, 220, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 9, 77, 0.2);
+    border: 1px solid rgba(61, 143, 220, 0.1);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card .icon {
+    font-size: 3em;
+    color: #3d8fdc;
+    margin-bottom: 20px;
+}
+
+body.dark-mode .service-card .icon {
+    color: #00f7ff;
+}
+
+.service-card h3 {
+    color: #000;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+body.dark-mode .service-card h3 {
+    color: #fff;
+}
+
+.service-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-card li {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+body.dark-mode .service-card li {
+    color: #a0aec0;
+}
+

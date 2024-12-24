@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../images/logo.png';
 import './Header.css';
+import useScrollToElement from '../hooks/useScrollToElement';
+
 
 
 const Header = () => {
@@ -8,6 +11,7 @@ const Header = () => {
     const [isDarkMode, setIsDarkMode] = useState(
         localStorage.getItem('mode') === 'dark'
     );
+    const scrollToElement = useScrollToElement();
 
     useEffect(() => {
         // Initiële darkmode instelling
@@ -26,11 +30,18 @@ const Header = () => {
         localStorage.setItem('mode', isDarkMode ? 'light' : 'dark');
     };
 
+    const handlePortfolioClick = (e) => {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        scrollToElement('projects');
+    };
+
     return (
         <header>
             <div className="container">
                 <nav className="nav-bar">
                     <Link to="/" className="nav-branding">
+                        <img src={logo} alt="LeverWebDesign Logo" className="logo" />
                         <div className="neon-text" id="neonText">
                             <span>D</span><span>a</span><span>r</span><span>k</span>
                             <span>-</span><span>M</span><span>o</span><span>d</span><span>e</span>
@@ -54,19 +65,23 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                            <Link to="/over-mij" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                                 Over mij
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/services" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                            <Link to="/diensten" className="nav-link" onClick={() => setIsMenuOpen(false)}>
                                 Diensten
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/#portfolio" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                            <a 
+                                href="/#portfolio" 
+                                className="nav-link" 
+                                onClick={handlePortfolioClick}
+                            >
                                 Portfolio
-                            </Link>
+                            </a>
                         </li>
                         <li className="nav-item">
                             <Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>

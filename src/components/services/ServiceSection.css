@@ -1,0 +1,131 @@
+.services-section {
+    padding: 100px 0;
+    background-color: #fff;
+}
+
+body.dark-mode .services-section {
+    background-color: #000;
+}
+
+.services-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .service-card {
+    background: rgba(61, 143, 220, 0.05);
+    border: 1px solid rgba(61, 143, 220, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 9, 77, 0.2);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-color: #3d8fdc;
+}
+
+body.dark-mode .service-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 9, 77, 0.3);
+    border-color: #00f7ff;
+    background: linear-gradient(145deg, rgba(61, 143, 220, 0.1), rgba(0, 247, 255, 0.05));
+}
+
+.service-icon {
+    font-size: 2.5em;
+    color: #3d8fdc;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode .service-icon {
+    color: #00f7ff;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1);
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    color: #000;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+body.dark-mode .service-card h3 {
+    color: #fff;
+}
+
+.service-card p {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+body.dark-mode .service-card p {
+    color: #a0aec0;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features-list li {
+    color: #666;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+body.dark-mode .features-list li {
+    color: #a0aec0;
+}
+
+.features-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #3d8fdc;
+}
+
+body.dark-mode .features-list li::before {
+    color: #00f7ff;
+}
+
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 60px 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: 30px;
+    }
+} 
