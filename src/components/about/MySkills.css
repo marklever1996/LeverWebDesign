@@ -70,6 +70,7 @@ body.dark-mode .skill-card:hover {
     font-size: 3em;
     margin-bottom: 20px;
     color: var(--skill-color);
+    text-shadow: 0 0 20px rgba(255, 143, 143, 0.5);
     transition: transform 0.3s ease;
 }
 

@@ -178,12 +178,12 @@ body.dark-mode .service-card p {
 
 .service-card:nth-child(2) .service-icon {
     color: #4ECDC4;
-    text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+    text-shadow: 0 0 20px rgba(255, 143, 143, 0.5);
 }
 
 .service-card:nth-child(3) .service-icon {
     color: #FFE066;
-    text-shadow: 0 0 20px rgba(255, 224, 102, 0.5);
+    text-shadow: 0 0 20px rgba(255, 143, 143, 0.5);
 }
 
 /* Specifieke hover effecten per card */
