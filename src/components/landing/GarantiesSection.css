@@ -2,6 +2,8 @@
     background-color: #fff;
     padding: 80px 0;
     position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 body.dark-mode .garanties {
@@ -11,64 +13,58 @@ body.dark-mode .garanties {
 .garanties .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
+    width: 100%;
 }
 
-.garanties h2 {
-    font-size: 2.5em;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 50px;
-    letter-spacing: 0.05em;
+.garanties-content {
+    width: 100%;
 }
 
-.garanties h2 span:first-child {
-    color: #3d8fdc;
+.garanties-text {
+    width: 100%;
 }
 
-.garanties h2 span:last-child {
-    color: #000;
+.header-container {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+    width: 100%;
 }
 
-body.dark-mode .garanties h2 span:first-child {
-    color: #00f7ff;
+.image-wrapper {
+    flex: 0 0 auto;
+    width: 300px;
 }
 
-body.dark-mode .garanties h2 span:last-child {
-    color: #3d8fdc;
+.savings-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .pricing-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+    flex: 1;
 }
 
 .pricing-header h3 {
     font-size: 2em;
-    margin-bottom: 20px;
-    color: #000;
-}
-
-body.dark-mode .pricing-header h3 {
-    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
 }
 
 .price {
     color: #3d8fdc;
-    font-weight: 600;
-}
-
-body.dark-mode .price {
-    color: #00f7ff;
+    font-weight: 700;
 }
 
 .pricing-header p {
-    font-size: 1.2em;
-    color: #666;
-    max-width: 800px;
-    margin: 0 auto 20px;
+    font-size: 1.1em;
     line-height: 1.6;
+    color: #666;
+    margin-bottom: 1rem;
 }
 
 body.dark-mode .pricing-header p {
@@ -77,58 +73,33 @@ body.dark-mode .pricing-header p {
 
 .checkmarks {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    width: 100%;
+    margin-top: 2rem;
 }
 
 .checkmark {
+    background: rgba(61, 143, 220, 0.05);
     padding: 2rem;
-    background: #ffffff;
-    border-radius: 15px;
-    border: 1px solid rgba(1, 23, 196, 0.1);
-    box-shadow: 0 4px 20px rgba(1, 23, 196, 0.05);
-}
-
-body.dark-mode .checkmark {
-    background: rgba(0, 9, 77, 0.2);
-    border-color: rgba(61, 143, 220, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 9, 77, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .checkmark:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(61, 143, 220, 0.1);
 }
 
-.checkmark i {
-    font-size: 2em;
+.check-icon {
     color: #3d8fdc;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-}
-
-body.dark-mode .checkmark i {
-    color: #00f7ff;
-}
-
-.checkmark:hover i {
-    transform: scale(1.1);
-    text-shadow: 0 0 15px rgba(61, 143, 220, 0.5);
-}
-
-body.dark-mode .checkmark:hover i {
-    text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+    font-size: 1.5em;
+    margin-bottom: 1rem;
 }
 
 .checkmark h4 {
-    font-size: 1.3em;
-    color: #0117c4;
-    margin-bottom: 10px;
-}
-
-body.dark-mode .checkmark h4 {
-    color: #3d8fdc;
+    font-size: 1.2em;
+    margin-bottom: 0.5rem;
+    color: #000;
 }
 
 .checkmark p {
@@ -136,160 +107,145 @@ body.dark-mode .checkmark h4 {
     line-height: 1.6;
 }
 
+body.dark-mode .checkmark {
+    background: rgba(61, 143, 220, 0.1);
+    border: 1px solid rgba(61, 143, 220, 0.2);
+}
+
+body.dark-mode .checkmark:hover {
+    background: rgba(61, 143, 220, 0.15);
+    border-color: rgba(61, 143, 220, 0.3);
+    box-shadow: 0 10px 30px rgba(61, 143, 220, 0.1);
+}
+
+body.dark-mode .check-icon {
+    color: #3d8fdc;
+}
+
+body.dark-mode .checkmark h4 {
+    color: #fff;
+}
+
 body.dark-mode .checkmark p {
     color: #a0aec0;
 }
 
-/* Animaties */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+body.dark-mode .savings-image {
+    box-shadow: 0 4px 20px rgba(61, 143, 220, 0.2);
+    opacity: 0.9;
 }
 
-.checkmark {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
+body.dark-mode .pricing-header h3 {
+    color: #fff;
 }
 
-.checkmark:nth-child(1) { animation-delay: 0.1s; }
-.checkmark:nth-child(2) { animation-delay: 0.2s; }
-.checkmark:nth-child(3) { animation-delay: 0.3s; }
-.checkmark:nth-child(4) { animation-delay: 0.4s; }
-.checkmark:nth-child(5) { animation-delay: 0.5s; }
-.checkmark:nth-child(6) { animation-delay: 0.6s; }
+body.dark-mode .price {
+    color: #3d8fdc;
+    font-weight: 700;
+}
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .garanties .container {
-        padding: 0 1rem;
-    }
-
-    .garanties-text {
+/* Responsive styling */
+@media (max-width: 1024px) {
+    .header-container {
         gap: 2rem;
+    }
+
+    .image-wrapper {
+        width: 250px;
+    }
+
+    .pricing-header h3 {
+        font-size: 1.75em;
+    }
+}
+
+@media (max-width: 768px) {
+    .garanties {
+        padding: 40px 0;
+    }
+
+    .garanties .container {
+        padding: 0 20px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .image-wrapper {
+        width: 220px;
+        margin: 0 auto;
+    }
+
+    .pricing-header h3 {
+        font-size: 2em;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+    }
+
+    .pricing-header p {
+        font-size: 1.15em;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
     }
 
     .checkmarks {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        margin-top: 2rem;
     }
 
     .checkmark {
-        margin: 0 auto;
-        width: 100%;
-        max-width: none;
+        padding: 1.75rem;
+        text-align: center;
     }
 
-    .pricing-header {
-        padding: 0 1rem;
+    .check-icon {
+        font-size: 1.5em;
+        margin-bottom: 1rem;
+    }
+
+    .checkmark h4 {
+        font-size: 1.4em;
+        margin-bottom: 0.75rem;
+    }
+
+    .checkmark p {
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
+
+    .price {
+        display: inline-block;
+        margin: 0 0.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .garanties {
+        padding: 30px 0;
+    }
+
+    .garanties .container {
+        padding: 0 15px;
+    }
+
+    .image-wrapper {
+        width: 180px;
     }
 
     .pricing-header h3 {
-        font-size: 1.5rem;
-    }
-} 
-
-.check-icon {
-    font-size: 2em;
-    color: #3d8fdc;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-}
-
-body.dark-mode .check-icon {
-    color: #00f7ff;
-}
-
-.checkmark:hover .check-icon {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 15px rgba(61, 143, 220, 0.5));
-}
-
-body.dark-mode .checkmark:hover .check-icon {
-    filter: drop-shadow(0 0 15px rgba(0, 247, 255, 0.5));
-} 
-
-.garanties-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.garanties-text {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-}
-
-.savings-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 15px;
-}
-
-.pricing-header {
-    text-align: left;
-    max-width: 800px;
-}
-
-.pricing-header h3 {
-    text-align: left;
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #000;
-}
-
-.pricing-header p {
-    text-align: left;
-    margin: 0 0 20px 0;
-}
-
-@media (max-width: 992px) {
-    .garanties-text {
-        flex-direction: column;
-        align-items: center;
+        font-size: 1.75em;
     }
 
-    .savings-image {
-        flex: 0 0 100%;
-        max-width: 400px;
-    }
-
-    .pricing-header {
-        text-align: center;
-    }
-
-    .pricing-header h3,
     .pricing-header p {
-        text-align: center;
-    }
-} 
-
-/* Nieuwe container voor image en header */
-.header-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    width: 100%;
-    align-items: center;
-}
-
-/* Media query voor mobiele apparaten */
-@media (max-width: 768px) {
-    .header-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        font-size: 1.1em;
     }
 
-    .pricing-header {
-        text-align: center;
+    .checkmark {
+        padding: 1.5rem;
     }
 } 

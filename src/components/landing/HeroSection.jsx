@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './HeroSection.css';
 import heroImage from '../../images/hero.png';
 
@@ -57,7 +58,9 @@ const HeroSection = () => {
             <div className="hero-content">
                 <h1>Webdesign & Webdevelopment Voor Kleine Bedrijven</h1>
                 <p>Moderne websites & webapplicaties</p>
-                <button className="cta-button">Maak een afspraak</button>
+                <Link to="/contact" className="cta-button">
+                    Maak een afspraak
+                </Link>
             </div>
         </section>
     );

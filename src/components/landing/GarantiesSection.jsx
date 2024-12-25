@@ -6,8 +6,8 @@ import SavingsImage from '../../images/SavingsImage.png';
 const GarantiesSection = () => {
     const guarantees = [
         {
-            title: "Eerlijke Hostingkosten",
-            description: "Hostingkosten met een eerlijke prijsgarantie"
+            title: "Geen knip-en-plak werk",
+            description: "Ik maak een unieke website voor jou, niet een template."
         },
         {
             title: "Onbeperkte bewerkingen",
@@ -18,16 +18,8 @@ const GarantiesSection = () => {
             description: "Extensive preciese aan webdesign, webdevelopment en testen."
         },
         {
-            title: "Persoonlijke Klantenservice",
-            description: "Bel rechtstreeks, geen telefoonmenu's of geautomatiseerde reacties."
-        },
-        {
             title: "SEO-optimalisatie",
             description: "Basis SEO-optimalisatie is inbegrepen."
-        },
-        {
-            title: "Geen knip-en-plak werk",
-            description: "Ik maak een unieke website voor jou, niet een template."
         }
     ];
 
@@ -37,7 +29,9 @@ const GarantiesSection = () => {
                 <div className="garanties-content">
                     <div className="garanties-text">
                         <div className="header-container">
-                            <img src={SavingsImage} alt="Savings" className="savings-image" />
+                            <div className="image-wrapper">
+                                <img src={SavingsImage} alt="Savings" className="savings-image" />
+                            </div>
                             <div className="pricing-header">
                                 <h3>
                                     <span className="price">50%</span> Aanbetaling,{' '}
