@@ -16,10 +16,10 @@ const ContactSection = () => {
 
         try {
             await emailjs.sendForm(
-                'YOUR_SERVICE_ID', // Je EmailJS service ID
-                'YOUR_TEMPLATE_ID', // Je EmailJS template ID
+                'service_fd7h5h8', // Vervang met je echte EmailJS service ID
+                'template_2yrlkwl', // Vervang met je echte EmailJS template ID
                 form.current,
-                'YOUR_PUBLIC_KEY' // Je EmailJS public key
+                'M2c2z4liNUif_gAAl' // Vervang met je echte EmailJS public key
             );
 
             setStatus({
@@ -28,10 +28,8 @@ const ContactSection = () => {
                 info: { error: false, msg: 'Bericht succesvol verzonden!' }
             });
 
-            // Reset form
             form.current.reset();
 
-            // Reset status after 5 seconds
             setTimeout(() => {
                 setStatus({
                     submitted: false,
@@ -41,6 +39,7 @@ const ContactSection = () => {
             }, 5000);
 
         } catch (error) {
+            console.error('EmailJS error:', error);
             setStatus({
                 submitted: false,
                 submitting: false,

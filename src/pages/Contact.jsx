@@ -1,44 +1,51 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FaEnvelope, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
+    const form = useRef();
+    const [status, setStatus] = useState({
+        submitted: false,
+        submitting: false,
+        info: { error: false, msg: null }
     });
-    const [status, setStatus] = useState('');
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setStatus('sending');
+        setStatus(prevStatus => ({ ...prevStatus, submitting: true }));
 
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
+            await emailjs.sendForm(
+                'service_fd7h5h8',
+                'template_kohf6co',
+                form.current,
+                'M2c2z4liNUif_gAAl'
+            );
+
+            setStatus({
+                submitted: true,
+                submitting: false,
+                info: { error: false, msg: 'Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.' }
             });
 
-            if (response.ok) {
-                setStatus('success');
-                setFormData({ name: '', email: '', phone: '', message: '' });
-            } else {
-                setStatus('error');
-            }
+            form.current.reset();
+
+            setTimeout(() => {
+                setStatus({
+                    submitted: false,
+                    submitting: false,
+                    info: { error: false, msg: null }
+                });
+            }, 5000);
+
         } catch (error) {
-            setStatus('error');
+            console.error('EmailJS error:', error);
+            setStatus({
+                submitted: false,
+                submitting: false,
+                info: { error: true, msg: 'Er is iets misgegaan. Probeer het later opnieuw of neem direct contact op.' }
+            });
         }
     };
 
@@ -90,31 +97,27 @@ const Contact = () => {
                     </div>
 
                     <div className="contact-form-section">
-                        <form onSubmit={handleSubmit} className="contact-form">
+                        <form ref={form} onSubmit={handleSubmit} className="contact-form">
                             <h2>Stuur een bericht</h2>
                             <p>Vul het contactformulier in en ik neem zo snel mogelijk contact met je op.</p>
                             
                             <div className="form-group">
-                                <label htmlFor="name">Naam</label>
+                                <label htmlFor="user_name">Naam</label>
                                 <input
                                     type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
+                                    id="user_name"
+                                    name="user_name"
                                     required
                                     placeholder="Naam"
                                 />
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="user_email">Email</label>
                                 <input
                                     type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
+                                    id="user_email"
+                                    name="user_email"
                                     required
                                     placeholder="Email"
                                 />
@@ -126,8 +129,6 @@ const Contact = () => {
                                     type="tel"
                                     id="phone"
                                     name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
                                     placeholder="Telefoonnummer"
                                 />
                             </div>
@@ -137,8 +138,6 @@ const Contact = () => {
                                 <textarea
                                     id="message"
                                     name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
                                     required
                                     placeholder="Je bericht..."
                                     rows="5"
@@ -148,19 +147,14 @@ const Contact = () => {
                             <button 
                                 type="submit" 
                                 className="submit-button"
-                                disabled={status === 'sending'}
+                                disabled={status.submitting}
                             >
-                                {status === 'sending' ? 'Verzenden...' : 'Verstuur'}
+                                {status.submitting ? 'Verzenden...' : 'Verstuur'}
                             </button>
 
-                            {status === 'success' && (
-                                <div className="form-status success">
-                                    Bedankt voor je bericht! Ik neem zo snel mogelijk contact met je op.
-                                </div>
-                            )}
-                            {status === 'error' && (
-                                <div className="form-status error">
-                                    Er is iets misgegaan. Probeer het later opnieuw of neem direct contact op.
+                            {status.info.msg && (
+                                <div className={`form-status ${status.info.error ? 'error' : 'success'}`}>
+                                    {status.info.msg}
                                 </div>
                             )}
                         </form>
