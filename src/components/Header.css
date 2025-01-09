@@ -144,51 +144,231 @@ body.dark-mode .neon-text {
     color: dodgerblue;
 }
 
-/* Toggle switch styling */
+/* Toggle switch styling - Creatieve versie */
 .toggle-container {
-    display: flex;
-    align-items: center;
+    position: relative;
     margin-left: 20px;
 }
 
 .toggle-switch {
-    appearance: none;
-    width: 40px;
-    height: 20px;
-    background: #ccc;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    outline: none;
-    transition: background 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.toggle-switch::before {
-    content: '';
-    width: 18px;
-    height: 18px;
-    background: #fff;
-    border-radius: 50%;
+    opacity: 0;
     position: absolute;
-    top: 1px;
-    left: 1px;
-    transition: transform 0.3s;
 }
 
-.toggle-switch:checked {
-    background: #333;
+.toggle-label {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: normal;
 }
 
-.toggle-switch:checked::before {
-    transform: translateX(20px);
+/* Zon styling - verbeterd */
+.sun-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: #ffd700;
+    stroke: #ffd700;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8));
 }
 
-.toggle-text {
-    margin-left: 8px;
-    color: lightgray;
-    font-size: 0.9em;
-    transition: color 0.3s;
+.sun-icon circle {
+    fill: #ffd700;
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    transition: all 0.6s ease;
+}
+
+/* Zon animaties */
+@keyframes sunRotate {
+    from { 
+        transform: translate(-50%, -50%) rotate(0deg);
+        filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+    }
+    to { 
+        transform: translate(-50%, -50%) rotate(360deg);
+        filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6));
+    }
+}
+
+@keyframes sunRays {
+    0%, 100% {
+        stroke-width: 1.5;
+        opacity: 0.8;
+    }
+    50% {
+        stroke-width: 2;
+        opacity: 1;
+    }
+}
+
+/* Aangepaste states voor de zon */
+.toggle-switch:checked + .toggle-label .sun-icon {
+    opacity: 1;
+    animation: sunRotate 30s linear infinite;
+}
+
+.toggle-switch:checked + .toggle-label .sun-icon line {
+    animation: sunRays 3s ease-in-out infinite;
+}
+
+/* Hover effect voor de zon */
+.toggle-label:hover .sun-icon {
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
+}
+
+/* Maan styling - met donkerblauwe schaduw */
+.moon-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    stroke-width: 2;
+    opacity: 1;
+    transition: all 0.5s ease;
+    filter: brightness(1) blur(0.3px) drop-shadow(0 0 3px #00094d);
+}
+
+.moon-icon path {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.6s ease;
+}
+
+/* Hover en active states */
+.toggle-label:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.toggle-label:active {
+    transform: scale(0.95) rotate(-5deg);
+}
+
+.toggle-label:hover .sun-icon,
+.toggle-label:hover .moon-icon {
+    filter: drop-shadow(0 0 8px currentColor) blur(0.3px);
+}
+
+/* Toggle states met verbeterde animaties */
+.toggle-switch:checked + .toggle-label .sun-icon {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    animation: sunRotate 20s linear infinite;
+}
+
+.toggle-switch:checked + .toggle-label .moon-icon {
+    opacity: 0;
+    stroke-dashoffset: 50;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+.toggle-switch:not(:checked) + .toggle-label .sun-icon {
+    opacity: 0;
+    stroke-dashoffset: 50;
+    transform: translate(-50%, -50%) scale(0.5);
+}
+
+.toggle-switch:not(:checked) + .toggle-label .moon-icon {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    animation: moonFloat 6s ease-in-out infinite;
+}
+
+/* Creatieve animaties */
+@keyframes sunRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes moonFloat {
+    0%, 100% { 
+        transform: translate(-50%, -50%) rotate(0deg); 
+        filter: brightness(1) drop-shadow(0 0 3px #00094d);
+    }
+    50% { 
+        transform: translate(-50%, -45%) rotate(5deg);
+        filter: brightness(1) drop-shadow(0 0 8px #00094d);
+    }
+}
+
+/* Glow effect met donkerblauwe schaduw */
+@keyframes iconGlow {
+    0%, 100% { 
+        filter: drop-shadow(0 0 3px #00094d) blur(0.3px);
+    }
+    25% { 
+        filter: drop-shadow(0 0 8px #00094d) blur(0.3px);
+    }
+    50% { 
+        filter: drop-shadow(0 0 12px #00094d) blur(0.3px);
+    }
+    75% { 
+        filter: drop-shadow(0 0 8px #00094d) blur(0.3px);
+    }
+}
+
+.sun-icon {
+    animation: iconGlow 8s ease infinite;
+}
+
+.moon-icon {
+    animation: iconGlow 8s ease infinite reverse;
+}
+
+/* Interactieve hover effect */
+.toggle-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(61, 143, 220, 0.2), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.toggle-label:hover::after {
+    width: 150%;
+    height: 150%;
+}
+
+/* Media query aanpassingen */
+@media (max-width: 767px) {
+    .toggle-container {
+        margin: 1.5em auto;
+    }
+    
+    .toggle-label {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .toggle-label:hover {
+        transform: scale(1.05) rotate(3deg);
+    }
 }
 
 /* Hamburger menu */

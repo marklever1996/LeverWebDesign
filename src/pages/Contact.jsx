@@ -18,9 +18,9 @@ const Contact = () => {
         try {
             await emailjs.sendForm(
                 'service_fd7h5h8',
-                'template_kohf6co',
+                'template_2yrlkwl',
                 form.current,
-                'M2c2z4liNUif_gAAl'
+                'YOUR_PUBLIC_KEY' // Vervang dit met je publieke key van EmailJS
             );
 
             setStatus({

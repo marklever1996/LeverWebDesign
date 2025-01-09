@@ -96,13 +96,22 @@ const Header = () => {
                                 checked={isDarkMode}
                                 onChange={handleDarkModeToggle}
                             />
-                            <label htmlFor="mode-toggle" className="toggle-label"></label>
-                            <span 
-                                className="toggle-text"
-                                style={{ color: isDarkMode ? '#3d8fdc' : 'lightgray' }}
-                            >
-                                {isDarkMode ? 'Light' : 'Dark'}
-                            </span>
+                            <label htmlFor="mode-toggle" className="toggle-label">
+                                <svg className="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <circle r="5" cx="12" cy="12"></circle>
+                                    <line x1="12" y1="3" x2="12" y2="1"></line>
+                                    <line x1="12" y1="23" x2="12" y2="21"></line>
+                                    <line x1="3" y1="12" x2="1" y2="12"></line>
+                                    <line x1="23" y1="12" x2="21" y2="12"></line>
+                                    <line x1="5.6" y1="5.6" x2="4.2" y2="4.2"></line>
+                                    <line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line>
+                                    <line x1="5.6" y1="18.4" x2="4.2" y2="19.8"></line>
+                                    <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line>
+                                </svg>
+                                <svg className="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+                                </svg>
+                            </label>
                         </div>
                     </ul>
                 </nav>
