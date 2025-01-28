@@ -1,55 +1,90 @@
 .services-section {
-    padding: 100px 0;
-    background-color: #fff;
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    background: #fff;
+    transition: all 0.3s ease;
 }
 
 body.dark-mode .services-section {
-    background-color: #000;
+    background: #000;
+}
+
+.services-section h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+    color: #1a1a1a;
+    font-weight: 600;
+    position: relative;
+    letter-spacing: -0.5px;
+}
+
+body.dark-mode .services-section h2 {
+    color: #fff;
+}
+
+.services-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, #3d8fdc, #2c3e50);
+    border-radius: 2px;
+}
+
+body.dark-mode .services-section h2::after {
+    background: linear-gradient(45deg, #00f7ff, #3d8fdc);
 }
 
 .services-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1400px;
 }
 
 .service-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 40px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
 }
 
 body.dark-mode .service-card {
-    background: rgba(61, 143, 220, 0.05);
+    background: rgba(13, 17, 23, 0.95);
     border: 1px solid rgba(61, 143, 220, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 9, 77, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(61, 143, 220, 0.15);
     border-color: #3d8fdc;
 }
 
 body.dark-mode .service-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 9, 77, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 247, 255, 0.1);
     border-color: #00f7ff;
-    background: linear-gradient(145deg, rgba(61, 143, 220, 0.1), rgba(0, 247, 255, 0.05));
+    background: rgba(13, 17, 23, 0.98);
 }
 
 .service-icon {
-    font-size: 2.5em;
+    font-size: 2.75rem;
     color: #3d8fdc;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
 }
 
 body.dark-mode .service-icon {
@@ -57,14 +92,20 @@ body.dark-mode .service-icon {
 }
 
 .service-card:hover .service-icon {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(5deg);
+    color: #2c3e50;
+}
+
+body.dark-mode .service-card:hover .service-icon {
+    color: #3d8fdc;
 }
 
 .service-card h3 {
-    font-size: 1.5em;
-    color: #000;
-    margin-bottom: 15px;
+    font-size: 1.75rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
     font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 body.dark-mode .service-card h3 {
@@ -73,8 +114,9 @@ body.dark-mode .service-card h3 {
 
 .service-card p {
     color: #666;
-    margin-bottom: 25px;
-    line-height: 1.6;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    font-size: 1.1rem;
 }
 
 body.dark-mode .service-card p {
@@ -89,9 +131,11 @@ body.dark-mode .service-card p {
 
 .features-list li {
     color: #666;
-    margin-bottom: 10px;
-    padding-left: 25px;
+    margin-bottom: 0.875rem;
+    padding-left: 1.75rem;
     position: relative;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 body.dark-mode .features-list li {
@@ -103,29 +147,47 @@ body.dark-mode .features-list li {
     position: absolute;
     left: 0;
     color: #3d8fdc;
+    font-weight: 600;
+    transition: transform 0.3s ease;
 }
 
 body.dark-mode .features-list li::before {
     color: #00f7ff;
 }
 
-@media (max-width: 1200px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
+.service-card:hover .features-list li::before {
+    transform: translateX(3px);
 }
 
+/* Responsive aanpassingen */
 @media (max-width: 768px) {
     .services-section {
-        padding: 60px 0;
+        padding: 4rem 1rem;
+        gap: 3rem;
+    }
+
+    .services-section h2 {
+        font-size: 2.25rem;
     }
 
     .services-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .service-card {
-        padding: 30px;
+        padding: 2rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+    }
+
+    .service-icon {
+        font-size: 2.25rem;
     }
 } 

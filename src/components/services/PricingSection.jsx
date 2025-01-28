@@ -6,7 +6,7 @@ const PricingSection = () => {
     const packages = [
         {
             name: 'Starter',
-            price: '699',
+            price: '499',
             description: 'Perfect voor kleine bedrijven die online willen starten',
             features: [
                 'Professionele website',
@@ -20,7 +20,7 @@ const PricingSection = () => {
         },
         {
             name: 'Professional',
-            price: '999',
+            price: '699',
             description: 'Ideaal voor groeiende bedrijven met specifieke wensen',
             features: [
                 'Alles van Starter',
@@ -83,7 +83,7 @@ const PricingSection = () => {
                             ))}
                         </ul>
                         <Link to="/contact" className="cta-button">
-                            Neem contact op
+                            Plan gratis consult
                         </Link>
                     </div>
                 ))}

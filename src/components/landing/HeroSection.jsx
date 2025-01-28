@@ -56,7 +56,7 @@ const HeroSection = () => {
             </div>
             <img src={heroImage} alt="Lever Web Design Hero" />
             <div className="hero-content">
-                <h1>Webdesign & Webdevelopment Voor Kleine Bedrijven</h1>
+                <h1>Betaalbare websites voor kleine bedrijven die resultaat boeken</h1>
                 <p>Moderne websites & webapplicaties</p>
                 <Link to="/contact" className="cta-button">
                     Maak een afspraak

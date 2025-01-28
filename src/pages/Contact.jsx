@@ -75,8 +75,8 @@ const Contact = () => {
                         <div className="contact-cards">
                             <div className="info-card">
                                 <FaEnvelope className="icon" />
-                                <a href="mailto:leverwebdesign@gmail.com">
-                                    leverwebdesign@gmail.com
+                                <a href="mailto:info@leverwebdesign.nl">
+                                    info@leverwebdesign.nl
                                 </a>
                             </div>
 

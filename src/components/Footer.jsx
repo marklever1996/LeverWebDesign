@@ -21,8 +21,8 @@ const Footer = () => {
                         <h3>Contact</h3>
                         <ul>
                             <li>
-                                <a href="mailto:leverwebdesign@gmail.com">
-                                    leverwebdesign@gmail.com
+                                <a href="mailto:info@leverwebdesign.nl">
+                                    info@leverwebdesign.nl
                                 </a>
                             </li>
                             <li>

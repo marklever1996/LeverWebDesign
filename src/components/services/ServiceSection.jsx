@@ -9,20 +9,20 @@ const ServiceSection = () => {
             title: 'Website Design',
             description: 'Modern en gebruiksvriendelijk design dat perfect aansluit bij jouw merk en doelgroep.',
             features: [
-                'Responsive design voor alle apparaten',
+                'Aanpasbaar design',
                 'Gebruiksvriendelijke interface',
-                'Moderne layouts en animaties',
+                'Moderne layouts',
                 'Brand identity integratie'
             ]
         },
         {
             icon: <FaCode />,
             title: 'Web Development',
-            description: 'Professionele websites gebouwd met de nieuwste technologieën voor optimale prestaties.',
+            description: 'Professionele websites met een focus op optimale prestaties en gebruiksvriendelijkheid.',
             features: [
-                'SaaS applicaties',
-                'React applicaties',
-                'E-commerce oplossingen',
+                'Websites die nieuwe klanten aantrekt',
+                'Online afspraken maken',
+                'Dashboards, CRM, en meer',
                 'Persoonlijke websites'
             ]
         },
@@ -74,6 +74,7 @@ const ServiceSection = () => {
 
     return (
         <section className="services-section">
+            <h2>Een focus op jouw wensen</h2>
             <div className="services-grid">
                 {diensten.map((dienst, index) => (
                     <div className="service-card" key={index}>

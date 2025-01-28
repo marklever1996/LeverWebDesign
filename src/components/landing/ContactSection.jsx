@@ -56,9 +56,9 @@ const ContactSection = () => {
                         <h3>Laten we samenwerken</h3>
                         <p>Heb je een project in gedachten? Ik help je graag verder!</p>
                         <div className="contact-details">
-                            <a href="mailto:leverwebdesign@gmail.com" className="contact-item">
+                            <a href="mailto:info@leverwebdesign.nl" className="contact-item">
                                 <i className="fas fa-envelope"></i>
-                                leverwebdesign@gmail.com
+                                info@leverwebdesign.nl
                             </a>
                             <div className="contact-item">
                                 <i className="fas fa-phone"></i>
