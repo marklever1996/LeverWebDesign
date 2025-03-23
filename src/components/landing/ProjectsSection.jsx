@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import StudioStarImage from '../../images/Studiostar.png';
 import HanemaImage from '../../images/Hczorg.png';
 import PaperbaseImage from '../../images/Paperbase.png';
@@ -31,15 +31,56 @@ const ProjectsSection = () => {
         }
     ];
 
+    const sectionRef = useRef(null);
+    const headingRef = useRef(null);
+    const cardsRef = useRef([]);
+
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe heading
+        if (headingRef.current) {
+            observer.observe(headingRef.current);
+        }
+
+        // Observe project cards
+        cardsRef.current.forEach(card => {
+            if (card) {
+                observer.observe(card);
+            }
+        });
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
     return (
-        <section className="projects" id="projects">
-            <h2>
+        <section className="projects" id="projects" ref={sectionRef}>
+            <h2 ref={headingRef}>
                 <span>Mijn</span>{' '}
                 <span>projecten</span>
             </h2>
             <div className="projects-grid">
                 {projects.map((project, index) => (
-                    <div key={index} className="project-card">
+                    <div 
+                        key={index} 
+                        className="project-card"
+                        ref={el => cardsRef.current[index] = el}
+                    >
                         {typeof project.image === 'string' ? (
                             <img src={project.image} alt={project.title} />
                         ) : (

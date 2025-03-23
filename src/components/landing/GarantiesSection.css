@@ -10,11 +10,28 @@ body.dark-mode .garanties {
     background-color: #000;
 }
 
+.garanties::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(1, 23, 196, 0.02), rgba(61, 143, 220, 0.02));
+    z-index: 1;
+}
+
+body.dark-mode .garanties::before {
+    background: linear-gradient(135deg, rgba(0, 247, 255, 0.02), rgba(61, 143, 220, 0.02));
+}
+
 .garanties .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .garanties-content {
@@ -31,33 +48,91 @@ body.dark-mode .garanties {
     align-items: center;
     margin-bottom: 4rem;
     width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-container.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .image-wrapper {
     flex: 0 0 auto;
     width: 300px;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-wrapper.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .savings-image {
     width: 100%;
     height: auto;
     border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 15px rgba(61, 143, 220, 0.2));
+}
+
+.savings-image:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 20px rgba(61, 143, 220, 0.3));
 }
 
 .pricing-header {
     flex: 1;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 2;
+}
+
+.pricing-header.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .pricing-header h3 {
     font-size: 2em;
     margin-bottom: 1.5rem;
     line-height: 1.4;
+    position: relative;
+    color: #000;
+}
+
+body.dark-mode .pricing-header h3 {
+    color: #fff;
 }
 
 .price {
     color: #3d8fdc;
     font-weight: 700;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.price::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #3d8fdc, #00f7ff);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.price:hover::after {
+    transform: scaleX(1);
 }
 
 .pricing-header p {
@@ -65,7 +140,19 @@ body.dark-mode .garanties {
     line-height: 1.6;
     color: #666;
     margin-bottom: 1rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.pricing-header.visible p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pricing-header p:nth-child(2) { transition-delay: 0.2s; }
+.pricing-header p:nth-child(3) { transition-delay: 0.4s; }
 
 body.dark-mode .pricing-header p {
     color: #a0aec0;
@@ -82,29 +169,64 @@ body.dark-mode .pricing-header p {
     background: rgba(61, 143, 220, 0.05);
     padding: 2rem;
     border-radius: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.checkmark.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.checkmark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3d8fdc, #00f7ff);
+    transform: scaleX(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .checkmark:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(61, 143, 220, 0.1);
+    box-shadow: 0 15px 35px rgba(61, 143, 220, 0.15);
+    background: rgba(61, 143, 220, 0.08);
+}
+
+.checkmark:hover::before {
+    transform: scaleX(1);
 }
 
 .check-icon {
     color: #3d8fdc;
     font-size: 1.5em;
     margin-bottom: 1rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 5px rgba(61, 143, 220, 0.3));
+}
+
+.checkmark:hover .check-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(61, 143, 220, 0.5));
 }
 
 .checkmark h4 {
     font-size: 1.2em;
     margin-bottom: 0.5rem;
     color: #000;
+    position: relative;
 }
 
 .checkmark p {
     color: #666;
     line-height: 1.6;
+    position: relative;
 }
 
 body.dark-mode .checkmark {
@@ -115,7 +237,7 @@ body.dark-mode .checkmark {
 body.dark-mode .checkmark:hover {
     background: rgba(61, 143, 220, 0.15);
     border-color: rgba(61, 143, 220, 0.3);
-    box-shadow: 0 10px 30px rgba(61, 143, 220, 0.1);
+    box-shadow: 0 15px 35px rgba(61, 143, 220, 0.2);
 }
 
 body.dark-mode .check-icon {
@@ -131,18 +253,15 @@ body.dark-mode .checkmark p {
 }
 
 body.dark-mode .savings-image {
-    box-shadow: 0 4px 20px rgba(61, 143, 220, 0.2);
+    box-shadow: 0 8px 32px rgba(61, 143, 220, 0.2);
     opacity: 0.9;
 }
 
-body.dark-mode .pricing-header h3 {
-    color: #fff;
-}
-
-body.dark-mode .price {
-    color: #3d8fdc;
-    font-weight: 700;
-}
+/* Scroll-based animations */
+.checkmark:nth-child(1) { transition-delay: 0.2s; }
+.checkmark:nth-child(2) { transition-delay: 0.4s; }
+.checkmark:nth-child(3) { transition-delay: 0.6s; }
+.checkmark:nth-child(4) { transition-delay: 0.8s; }
 
 /* Responsive styling */
 @media (max-width: 1024px) {

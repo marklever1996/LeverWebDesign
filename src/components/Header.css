@@ -10,537 +10,454 @@
 
 /* Header styling */
 header {
-    background: linear-gradient(to right, #0117c4, #3d8fdc);
-    color: #fff;
-    padding: 0;
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
     z-index: 1000;
-    height: 95px;
-    display: flex;
-    align-items: center;
+    background: linear-gradient(to right, #0117c4, #3d8fdc);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(61, 143, 220, 0.1);
+    transition: all 0.3s ease;
 }
 
 body.dark-mode header {
     background: linear-gradient(to right, #00094d, #0f3c67);
+    border-bottom: 1px solid rgba(61, 143, 220, 0.2);
 }
 
 .container {
-    width: 80%;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 /* Navigation styling */
 .nav-bar {
-    min-height: 4.375em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 0 20px;
+    padding: 1rem 0;
+    position: relative;
+    height: 80px;
 }
 
 .nav-branding {
     display: flex;
     align-items: center;
-    gap: 1rem;
     text-decoration: none;
-    height: 100%;
+    gap: 1.5rem;
 }
 
-.nav-branding img {
-    width: 200px;
-    display: block;
+.logo {
+    height: 65px;
+    width: auto;
+    transition: transform 0.3s ease;
 }
 
-.nav-branding:hover {
-    color: dodgerblue;
+.logo:hover {
+    transform: scale(1.05);
 }
 
-/* Neon text styling */
 .neon-text {
-    position: absolute;
-    top: 70%;
-    left: 20%;
-    transform: translate(-50%, 10px) rotate(-2deg);
-    display: flex;
-    gap: 0.1em;
-    font-size: 1.5em;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: #00f7ff;
-    text-shadow:
-        0 0 5px rgba(0, 247, 255, 0.7),
-        0 0 10px rgba(0, 247, 255, 0.7),
-        0 0 20px rgba(0, 247, 255, 0.7),
-        0 0 40px rgba(0, 247, 255, 0.7),
-        0 0 80px rgba(0, 247, 255, 0.7),
-        0 0 120px rgba(0, 247, 255, 1);
-    animation: flicker 1.5s infinite alternate, float 3s ease-in-out infinite;
     display: none;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #00f7ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    position: absolute;
+    left: 70px;
+    top: 68px;
+    transform: rotate(-2deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-shadow: 0 0 7px rgba(0, 247, 255, 0.3);
 }
 
 body.dark-mode .neon-text {
-    display: flex;
+    display: block;
+    animation: neonFlicker 4s infinite;
+    opacity: 1;
 }
 
-@keyframes flicker {
-    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-        opacity: 0.99;
-        text-shadow:
-            0 0 4px rgba(0, 247, 255, 0.7),
-            0 0 11px rgba(0, 247, 255, 0.7),
-            0 0 19px rgba(0, 247, 255, 0.7),
-            0 0 40px rgba(0, 247, 255, 0.7),
-            0 0 80px rgba(0, 247, 255, 0.7),
-            0 0 90px rgba(0, 247, 255, 0.7),
-            0 0 100px rgba(0, 247, 255, 0.7),
-            0 0 150px rgba(0, 247, 255, 0.7);
+body.dark-mode .neon-text span {
+    animation: letterFlicker 5s infinite;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes neonFlicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0 0 7px #00f7ff,
+            0 0 10px #00f7ff,
+            0 0 21px #00f7ff,
+            0 0 42px rgba(0, 247, 255, 0.7),
+            0 0 82px rgba(0, 247, 255, 0.6),
+            0 0 92px rgba(0, 247, 255, 0.5),
+            0 0 102px rgba(0, 247, 255, 0.4),
+            0 0 151px rgba(0, 247, 255, 0.3);
+        opacity: 1;
     }
-    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-        opacity: 0.4;
+    20%, 22%, 24%, 55% {
         text-shadow: none;
+        opacity: 0.3;
     }
 }
 
-/* Zwevend animatie effect */
-@keyframes float {
-    0% {
-        transform: translate(-50%, 10px) rotate(-2deg);
+@keyframes letterFlicker {
+    0%, 100% {
+        opacity: 1;
+        transform: rotate(-2deg) scale(1);
+    }
+    25% {
+        opacity: 0.7;
+        transform: rotate(-2deg) scale(1.1);
     }
     50% {
-        transform: translate(-50%, 5px) rotate(-2deg);
+        opacity: 0.9;
+        transform: rotate(-2deg) scale(0.9);
     }
-    100% {
-        transform: translate(-50%, 10px) rotate(-2deg);
+    75% {
+        opacity: 0.8;
+        transform: rotate(-2deg) scale(1.05);
     }
 }
 
-/* Navigation menu */
+.neon-text span {
+    display: inline-block;
+    margin: 0 1px;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 2em;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .nav-item {
-    margin: 0;
-    list-style: none;
-    display: flex;
-    align-items: center;
+    position: relative;
 }
 
 .nav-link {
     color: #fff;
     text-decoration: none;
-    transition: 400ms ease;
-    padding: 0.5em 1em;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .nav-link:hover {
-    color: dodgerblue;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-/* Toggle switch styling - Creatieve versie */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.5));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+body.dark-mode .nav-link {
+    color: #fff;
+}
+
+/* Enhanced Toggle switch styling */
 .toggle-container {
-    position: relative;
-    margin-left: 20px;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
 }
 
 .toggle-switch {
-    opacity: 0;
-    position: absolute;
+    display: none;
 }
 
 .toggle-label {
+    width: 40px;
+    height: 40px;
     position: relative;
-    display: block;
-    width: 44px;
-    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 50%;
     background: transparent;
-    cursor: pointer;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    mix-blend-mode: normal;
 }
 
-/* Zon styling - verbeterd */
-.sun-icon {
+.toggle-label:hover {
+    transform: scale(1.1);
+}
+
+.toggle-label::before {
+    content: '';
     position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    fill: #ffd700;
-    stroke: #ffd700;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+        rgba(255, 220, 100, 0.15) 0%,
+        rgba(255, 182, 48, 0.1) 30%,
+        transparent 60%
+    );
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+}
+
+.toggle-label::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: transparent;
+    left: -50%;
+    top: -50%;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+}
+
+.toggle-switch:checked + .toggle-label::before {
+    transform: scale(1.2);
+    opacity: 1;
+    animation: sunGlow 4s infinite;
+}
+
+.toggle-switch:checked + .toggle-label::after {
+    transform: scale(1);
+    opacity: 0;
+}
+
+@keyframes sunGlow {
+    0%, 100% {
+        transform: scale(1.2);
+        background: radial-gradient(circle at center, 
+            rgba(255, 220, 100, 0.15) 0%,
+            rgba(255, 182, 48, 0.1) 30%,
+            transparent 60%
+        );
+    }
+    50% {
+        transform: scale(1.3);
+        background: radial-gradient(circle at center, 
+            rgba(255, 220, 100, 0.2) 0%,
+            rgba(255, 182, 48, 0.15) 30%,
+            transparent 60%
+        );
+    }
+}
+
+.sun-icon, .moon-icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #FFE082;
     stroke-width: 1.5;
     stroke-linecap: round;
-    opacity: 0;
-    transition: all 0.5s ease;
-    filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8));
-}
-
-.sun-icon circle {
-    fill: #ffd700;
-    stroke-dasharray: 0;
-    stroke-dashoffset: 0;
-    transition: all 0.6s ease;
-}
-
-/* Zon animaties */
-@keyframes sunRotate {
-    from { 
-        transform: translate(-50%, -50%) rotate(0deg);
-        filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6));
-    }
-    50% {
-        filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
-    }
-    to { 
-        transform: translate(-50%, -50%) rotate(360deg);
-        filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6));
-    }
-}
-
-@keyframes sunRays {
-    0%, 100% {
-        stroke-width: 1.5;
-        opacity: 0.8;
-    }
-    50% {
-        stroke-width: 2;
-        opacity: 1;
-    }
-}
-
-/* Aangepaste states voor de zon */
-.toggle-switch:checked + .toggle-label .sun-icon {
-    opacity: 1;
-    animation: sunRotate 30s linear infinite;
-}
-
-.toggle-switch:checked + .toggle-label .sun-icon line {
-    animation: sunRays 3s ease-in-out infinite;
-}
-
-/* Hover effect voor de zon */
-.toggle-label:hover .sun-icon {
-    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
-}
-
-/* Maan styling - met donkerblauwe schaduw */
-.moon-icon {
+    stroke-linejoin: round;
     position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    fill: #ffffff !important;
-    stroke: #ffffff !important;
-    stroke-width: 2;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 0 1px rgba(255, 220, 100, 0.3));
+}
+
+.moon-icon {
     opacity: 1;
-    transition: all 0.5s ease;
-    filter: brightness(1) blur(0.3px) drop-shadow(0 0 3px #00094d);
+    transform: scale(1);
+    stroke: #fff;
 }
 
-.moon-icon path {
-    fill: #ffffff !important;
-    stroke: #ffffff !important;
-    stroke-dasharray: 50;
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 0.6s ease;
+.sun-icon {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
 }
 
-/* Hover en active states */
-.toggle-label:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.toggle-label:active {
-    transform: scale(0.95) rotate(-5deg);
-}
-
-.toggle-label:hover .sun-icon,
-.toggle-label:hover .moon-icon {
-    filter: drop-shadow(0 0 8px currentColor) blur(0.3px);
-}
-
-/* Toggle states met verbeterde animaties */
 .toggle-switch:checked + .toggle-label .sun-icon {
     opacity: 1;
-    stroke-dashoffset: 0;
-    animation: sunRotate 20s linear infinite;
+    transform: scale(1) rotate(0);
+    filter: drop-shadow(0 0 4px rgba(255, 220, 100, 0.5));
+    animation: rotatingSun 20s linear infinite;
 }
 
 .toggle-switch:checked + .toggle-label .moon-icon {
     opacity: 0;
-    stroke-dashoffset: 50;
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: scale(0) rotate(180deg);
 }
 
-.toggle-switch:not(:checked) + .toggle-label .sun-icon {
-    opacity: 0;
-    stroke-dashoffset: 50;
-    transform: translate(-50%, -50%) scale(0.5);
-}
-
-.toggle-switch:not(:checked) + .toggle-label .moon-icon {
-    opacity: 1;
-    stroke-dashoffset: 0;
-    animation: moonFloat 6s ease-in-out infinite;
-}
-
-/* Creatieve animaties */
-@keyframes sunRotate {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes moonFloat {
-    0%, 100% { 
-        transform: translate(-50%, -50%) rotate(0deg); 
-        filter: brightness(1) drop-shadow(0 0 3px #00094d);
+@keyframes rotatingSun {
+    from {
+        transform: scale(1) rotate(0);
     }
-    50% { 
-        transform: translate(-50%, -45%) rotate(5deg);
-        filter: brightness(1) drop-shadow(0 0 8px #00094d);
+    to {
+        transform: scale(1) rotate(360deg);
     }
 }
 
-/* Glow effect met donkerblauwe schaduw */
-@keyframes iconGlow {
-    0%, 100% { 
-        filter: drop-shadow(0 0 3px #00094d) blur(0.3px);
-    }
-    25% { 
-        filter: drop-shadow(0 0 8px #00094d) blur(0.3px);
-    }
-    50% { 
-        filter: drop-shadow(0 0 12px #00094d) blur(0.3px);
-    }
-    75% { 
-        filter: drop-shadow(0 0 8px #00094d) blur(0.3px);
-    }
+.toggle-label:hover .sun-icon {
+    filter: drop-shadow(0 0 3px rgba(255, 220, 100, 0.6));
 }
 
-.sun-icon {
-    animation: iconGlow 8s ease infinite;
-}
-
-.moon-icon {
-    animation: iconGlow 8s ease infinite reverse;
-}
-
-/* Interactieve hover effect */
-.toggle-label::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(61, 143, 220, 0.2), transparent);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-}
-
-.toggle-label:hover::after {
-    width: 150%;
-    height: 150%;
-}
-
-/* Media query aanpassingen */
-@media (max-width: 767px) {
-    .toggle-container {
-        margin: 1.5em auto;
-    }
-    
-    .toggle-label {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .toggle-label:hover {
-        transform: scale(1.05) rotate(3deg);
-    }
+.toggle-label:hover .moon-icon {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
 }
 
 /* Hamburger menu */
 .hamburger {
+    display: none;
     cursor: pointer;
+    padding: 8px;
+    margin-right: -8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
     z-index: 1001;
+}
+
+.hamburger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .bar {
     display: block;
-    background-color: #fff;
-    width: 24px;
-    height: 2px;
+    width: 28px;
+    height: 3px;
     margin: 6px auto;
-    transition: all 300ms ease-in-out;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+body.dark-mode .bar {
+    background: #fff;
 }
 
 /* Media queries */
-@media (min-width: 768px) {
-    .nav-menu {
-        position: static;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1em;
-        width: auto;
-        opacity: 1;
-        background-color: transparent;
-    }
-
-    .hamburger {
-        display: none;
-    }
-}
-
-@media (max-width: 767px) {
-    header {
-        height: 70px;
-    }
-
+@media (max-width: 992px) {
     .nav-bar {
-        padding: 0 15px;
+        height: 70px;
+        padding: 0.5rem 0;
     }
 
-    .nav-branding {
-        gap: 0.5rem;
-    }
-
-    .nav-branding img {
-        width: 150px;
+    .logo {
+        height: 50px;
     }
 
     .hamburger {
-        order: 1;
-        padding: 12px 0;
+        display: block;
     }
 
-    .bar {
-        width: 22px;
-        height: 2px;
-        margin: 5px auto;
-        background-color: #fff;
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        width: 28px;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        width: 28px;
     }
 
     .nav-menu {
         position: fixed;
-        right: -100%;
         top: 70px;
+        left: 0;
+        right: 0;
+        gap: 0;
         flex-direction: column;
+        background: rgba(1, 23, 196, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         width: 100%;
-        height: calc(100% - 70px);
-        background: rgba(0, 0, 0, 0.95);
+        height: calc(100vh - 70px);
+        padding: 2rem 0;
         text-align: center;
-        transition: 0.3s ease-in-out;
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
         opacity: 0;
         visibility: hidden;
-        z-index: 900;
-        padding-top: 2em;
-        backdrop-filter: blur(10px);
+        transform: translateY(-10px);
+    }
+
+    body.dark-mode .nav-menu {
+        background: rgba(0, 9, 77, 0.98);
     }
 
     .nav-menu.active {
-        right: 0;
         opacity: 1;
         visibility: visible;
+        transform: translateY(0);
     }
 
     .nav-item {
-        margin: 0.75em 0;
+        margin: 1.5rem 0;
         opacity: 0;
         transform: translateY(20px);
-        transition: 0.3s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
 
     .nav-menu.active .nav-item {
         opacity: 1;
         transform: translateY(0);
+        transition-delay: calc(0.1s * var(--i));
     }
 
     .nav-link {
-        font-size: 1.1em;
-        padding: 0.75em 1em;
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+        width: 100%;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .nav-link::after {
+        display: none;
     }
 
     .toggle-container {
-        margin: 1.5em 0;
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.5rem;
+        border-radius: 30px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .neon-text {
-        font-size: 1em;
-        left: 50%;
-        top: 75%;
-        transform: translate(-50%, 10px) rotate(-2deg);
-        letter-spacing: 0.1em;
-        text-shadow:
-            0 0 3px rgba(0, 247, 255, 0.7),
-            0 0 7px rgba(0, 247, 255, 0.7),
-            0 0 15px rgba(0, 247, 255, 0.7),
-            0 0 30px rgba(0, 247, 255, 0.7);
+        display: none !important;
     }
-
-    body.dark-mode .neon-text {
-        display: flex;
-        gap: 0.05em;
-    }
-
-    @keyframes flicker {
-        0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-            opacity: 0.99;
-            text-shadow:
-                0 0 3px rgba(0, 247, 255, 0.7),
-                0 0 8px rgba(0, 247, 255, 0.7),
-                0 0 15px rgba(0, 247, 255, 0.7),
-                0 0 30px rgba(0, 247, 255, 0.7),
-                0 0 60px rgba(0, 247, 255, 0.7);
-        }
-        20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-            opacity: 0.4;
-            text-shadow: none;
-        }
-    }
-
-    @keyframes float {
-        0% {
-            transform: translate(-50%, 10px) rotate(-2deg);
-        }
-        50% {
-            transform: translate(-50%, 5px) rotate(-2deg);
-        }
-        100% {
-            transform: translate(-50%, 10px) rotate(-2deg);
-        }
-    }
-} 
-
-/* Update de logo class */
-.logo {
-    width: 50px;
-    height: auto;
-    display: block;
-    padding-top: 20px;
 } 

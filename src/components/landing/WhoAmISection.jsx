@@ -1,6 +1,6 @@
 import React from 'react';
 import './WhoAmISection.css';
-import ProfileImage from '../../images/SelfieCasual.jpg';
+import ProfileImage from '../../images/SelfieFormal.jpg';
 
 const WhoAmISection = () => {
     return (

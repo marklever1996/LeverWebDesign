@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FaDesktop, FaCode, FaMobile, FaSearch, FaRocket, FaTools } from 'react-icons/fa';
 import './ServiceSection.css';
 
 const ServiceSection = () => {
+    const titleRef = useRef(null);
+    const cardRefs = useRef([]);
+
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        if (titleRef.current) {
+            observer.observe(titleRef.current);
+        }
+
+        cardRefs.current.forEach(card => {
+            if (card) {
+                observer.observe(card);
+            }
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
     const diensten = [
         {
             icon: <FaDesktop />,
@@ -74,20 +106,28 @@ const ServiceSection = () => {
 
     return (
         <section className="services-section">
-            <h2>Een focus op jouw wensen</h2>
+            <h2 ref={titleRef}>Een focus op jouw wensen</h2>
             <div className="services-grid">
                 {diensten.map((dienst, index) => (
-                    <div className="service-card" key={index}>
-                        <div className="service-icon">
-                            {dienst.icon}
+                    <div 
+                        className="service-card" 
+                        key={index}
+                        ref={el => cardRefs.current[index] = el}
+                    >
+                        <div className="service-card-header">
+                            <div className="service-icon">
+                                {dienst.icon}
+                            </div>
+                            <h3>{dienst.title}</h3>
                         </div>
-                        <h3>{dienst.title}</h3>
-                        <p>{dienst.description}</p>
-                        <ul className="features-list">
-                            {dienst.features.map((feature, idx) => (
-                                <li key={idx}>{feature}</li>
-                            ))}
-                        </ul>
+                        <div className="service-card-content">
+                            <p className="service-description">{dienst.description}</p>
+                            <ul className="features-list">
+                                {dienst.features.map((feature, idx) => (
+                                    <li key={idx}>{feature}</li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 ))}
             </div>
