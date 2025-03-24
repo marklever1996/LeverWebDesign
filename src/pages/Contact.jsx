@@ -20,7 +20,7 @@ const Contact = () => {
                 'service_fd7h5h8',
                 'template_2yrlkwl',
                 form.current,
-                'M2c2z4liNUif_gAAl' // Vervang dit met je publieke key van EmailJS
+                'M2c2z4liNUif_gAAl' 
             );
 
             setStatus({
