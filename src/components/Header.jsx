@@ -36,11 +36,21 @@ const Header = () => {
         scrollToElement('projects');
     };
 
+    const handleNavClick = () => {
+        setIsMenuOpen(false);
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 100);
+    };
+
     return (
         <header>
             <div className="container">
                 <nav className="nav-bar">
-                    <Link to="/" className="nav-branding">
+                    <Link to="/" className="nav-branding" onClick={handleNavClick}>
                         <img src={logo} alt="LeverWebDesign Logo" className="logo" />
                         <div className="neon-text" id="neonText">
                             <span>D</span><span>a</span><span>r</span><span>k</span>
@@ -60,17 +70,17 @@ const Header = () => {
 
                     <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
                         <li className="nav-item">
-                            <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                            <Link to="/" className="nav-link" onClick={handleNavClick}>
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/over-mij" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                            <Link to="/over-mij" className="nav-link" onClick={handleNavClick}>
                                 Over mij
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/diensten" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                            <Link to="/diensten" className="nav-link" onClick={handleNavClick}>
                                 Diensten
                             </Link>
                         </li>
@@ -84,7 +94,7 @@ const Header = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                            <Link to="/contact" className="nav-link" onClick={handleNavClick}>
                                 Contact
                             </Link>
                         </li>

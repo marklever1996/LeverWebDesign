@@ -13,6 +13,16 @@ const Footer = () => {
         scrollToElement('projects');
     };
 
+    const handleNavClick = () => {
+        setIsMenuOpen(false);
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 100);
+    };
+
     return (
         <footer className="footer">
             <div className="footer-content">
@@ -36,8 +46,8 @@ const Footer = () => {
                     <div className="footer-section">
                         <h3>Links</h3>
                         <ul>
-                            <li><Link to="/over-mij">Over Mij</Link></li>
-                            <li><Link to="/diensten">Diensten</Link></li>
+                            <li><Link to="/over-mij" onClick={handleNavClick}>Over Mij</Link></li>
+                            <li><Link to="/diensten" onClick={handleNavClick}>Diensten</Link></li>
                             <li>
                                 <a 
                                     href="/#portfolio" 
@@ -46,7 +56,7 @@ const Footer = () => {
                                     Portfolio
                                 </a>
                             </li>
-                            <li><Link to="/contact">Contact</Link></li>
+                            <li><Link to="/contact" onClick={handleNavClick}>Contact</Link></li>
                         </ul>
                     </div>
 
