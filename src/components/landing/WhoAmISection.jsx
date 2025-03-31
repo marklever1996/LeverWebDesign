@@ -13,8 +13,8 @@ const WhoAmISection = () => {
                 <div className="content-wrapper">
                     <div className="text-content">
                         <p>
-                            Ik ben Mark Lever, 28 jaar oud. Ik heb Criminologie gestudeerd aan de Universiteit van Groningen.
-                            Zo'n vijf jaar geleden ben ik begonnen met web development als hobby.
+                            Ik ben Mark Lever, 28 jaar oud. Ik heb gestudeerd aan de Universiteit van Groningen.
+                            Zo'n vijf jaar geleden ben ik begonnen met web development & design.
                             Ik heb anderhalf jaar lang mezelf de juiste manier van het maken van websites aangeleerd en geleerd om zelf de code te schrijven.
                             In de loop der tijd is deze hobby uitgegroeid tot een ware passie, waarbij ik tientallen websites heb ontwikkeld.
                         </p>
